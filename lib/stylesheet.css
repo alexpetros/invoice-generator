@@ -1,0 +1,51 @@
+body {
+  font-family: Times;
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto;
+  print-color-adjust: exact;
+}
+
+.owner-info {
+  display: grid;
+  margin: 40px 0;
+  grid-template-columns: 1fr 1fr;
+  h1 { margin: 0; font-size: 70px; }
+  h2 { margin: 0; }
+  section { text-align: right };
+}
+
+.main-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.invoice {
+  text-align: right;
+  dl { display: grid; grid-template-columns: 1fr 1fr; }
+  dt { font-weight: bold; }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+
+  th, td {
+    padding: 1rem;
+    border: 1px solid gray;
+  }
+
+  th {
+    background-color: lightgray;
+    border-bottom: 2px solid gray;
+  }
+
+  .description {
+    min-width: 500px;
+  }
+
+  .item-title {
+    font-weight: bold;
+  }
+}
