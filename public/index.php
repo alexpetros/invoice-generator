@@ -29,7 +29,8 @@ form {
 <?php
 $profiles = db_query($db, 'SELECT * FROM profiles');
 $clients = db_query($db, 'SELECT * FROM businesses');
-$profile = $profiles[0]
+$profile = $profiles[0];
+$today = (new DateTime())
 ?>
 
 <section>
@@ -41,7 +42,9 @@ $profile = $profiles[0]
   }, $profiles);
 ?>
 </select>
+<button>Add New</button>
 
+<?php if ($profile): ?>
 <dl class=profile-details>
   <dt>Name</dt><dd><?= $profile["business_name"]?></dd>
   <dt>Email</dt><dd><?= $profile["email"]?></dd>
@@ -50,6 +53,7 @@ $profile = $profiles[0]
   <dd><?= $profile["address_1"]?><br> <?= $profile["address_2"]?>
   </dd>
 </dl>
+<?php endif ?>
 </section>
 
 <section>
@@ -61,6 +65,8 @@ $profile = $profiles[0]
   }, $clients);
 ?>
 </select>
+<button>Add New</button>
+</section>
 
 
 <section>
@@ -70,7 +76,7 @@ $profile = $profiles[0]
   Invoice #:
   <input type=text placeholder="Leave blank to auto-generate">
 </label>
-<label>Issue Date:<input type=date></label>
+<label>Issue Date:<input type=date value="<?= $today->format('Y-m-d') ?>"></label>
 <label>Due Date:<input type=date></label>
 
 <button>Generate</button>
