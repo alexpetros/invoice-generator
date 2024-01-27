@@ -25,16 +25,20 @@ form {
 
 <h1>Invoice Generator</h1>
 
-
 <?php
 $profiles = db_query($db, 'SELECT * FROM profiles');
 $clients = db_query($db, 'SELECT * FROM businesses');
-$profile = $profiles[0];
 $today = (new DateTime())
 ?>
 
 <section>
 <h2>Profiles</h2>
+<a href=/profile>Add New</a>
+
+<?php
+if (count($profiles) > 0):
+$profile = $profiles[0];
+?>
 <select name=profiles>
 <?php
   array_map(function ($profile) {
@@ -42,9 +46,6 @@ $today = (new DateTime())
   }, $profiles);
 ?>
 </select>
-<button>Add New</button>
-
-<?php if ($profile): ?>
 <dl class=profile-details>
   <dt>Name</dt><dd><?= $profile["business_name"]?></dd>
   <dt>Email</dt><dd><?= $profile["email"]?></dd>

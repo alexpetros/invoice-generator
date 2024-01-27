@@ -1,5 +1,0 @@
-PDOException: SQLSTATE[HY000]: General error: 1 no such table: profiles in /Users/awp/code/personal/invoicing/lib/sqlite.php:21
-Stack trace:
-#0 /Users/awp/code/personal/invoicing/lib/sqlite.php(21): PDO->prepare('SELECT * FROM p...')
-#1 /Users/awp/code/personal/invoicing/public/index.php(30): db_query(Object(PDO), 'SELECT * FROM p...')
-#2 {main}
