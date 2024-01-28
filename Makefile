@@ -2,7 +2,6 @@ DB_NAME=invoices.db
 
 .PHONY: all
 all: $(DB_NAME)
-	@[[ -f "$(DB_NAME)" ]] || { echo 'Missing db; run `make db`' && exit 1; }
 	php -S localhost:8000 -t public lib/router.php
 
 $(DB_NAME):

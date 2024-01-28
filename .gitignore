@@ -3,3 +3,4 @@ data/
 *.db
 *.db-wal
 *.db-shm
+error.txt

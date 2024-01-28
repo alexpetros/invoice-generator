@@ -27,13 +27,13 @@ form {
 
 <?php
 $profiles = db_query($db, 'SELECT * FROM profiles');
-$clients = db_query($db, 'SELECT * FROM businesses');
+$clients = db_query($db, 'SELECT * FROM clients');
 $today = (new DateTime())
 ?>
 
 <section>
 <h2>Profiles</h2>
-<a href=/profile>Add New</a>
+<a href=/profiles>Add New</a>
 
 <?php
 if (count($profiles) > 0):

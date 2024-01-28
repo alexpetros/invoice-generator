@@ -9,8 +9,8 @@ CREATE TABLE profiles (
   address_3 TEXT
 ) STRICT;
 
-CREATE TABLE businesses (
-  business_id INTEGER PRIMARY KEY,
+CREATE TABLE clients (
+  client_id INTEGER PRIMARY KEY,
   business_name TEXT NOT NULL,
   email TEXT,
   phone TEXT,
