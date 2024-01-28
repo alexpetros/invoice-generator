@@ -6,5 +6,10 @@ $db = db_connect("sqlite:$root/../invoices.db");
 
 $req = [
   'method' => $_SERVER['REQUEST_METHOD'],
-]
+];
+
+if ($req['method'] == 'DELETE') {
+  $info = parse_url($uri);
+  echo $info;
+}
 ?>

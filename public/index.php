@@ -3,25 +3,7 @@
 
 <title>Invoice Generator</title>
 <script src="/static/vendor/htmx-1.9.10.js"></script>
-
-<style>
-body {
-  max-width: 700px;
-}
-
-dl.profile-details {
-  display: grid;
-  grid-template-columns: fit-content(30%) 1fr;
-
-}
-
-form {
-  label {
-    margin: .5rem 0;
-    display: block;
-  }
-}
-</style>
+<style><?php include('../templates/app-stylesheet.css')?></style>
 
 <h1>Invoice Generator</h1>
 
@@ -37,7 +19,7 @@ $today = (new DateTime())
   <option value="" required disabled>--select profile--</option>
 <?php
   array_map(function ($profile) {
-    echo '<option>'.$profile['business_name'].'</option>';
+    echo '<option>'.$profile['name'].'</option>';
   }, $profiles);
 ?>
 </select>
@@ -50,7 +32,7 @@ $today = (new DateTime())
   <option value="" required disabled>--select client--</option>
 <?php
   array_map(function ($client) {
-    echo '<option>'.$client['business_name'].'</option>';
+    echo '<option>'.$client['name'].'</option>';
   }, $clients);
 ?>
 </select>
@@ -62,11 +44,17 @@ $today = (new DateTime())
 <h2>Generate Invoice</h2>
 <form action=/invoice method=POST>
 <label>
-  Invoice #:
+  <div>Invoice #:</div>
   <input type=text placeholder="Leave blank to auto-generate">
 </label>
-<label>Issue Date:<input type=date value="<?= $today->format('Y-m-d') ?>"></label>
-<label>Due Date:<input type=date></label>
+<label>
+  <div>Issue Date:</div>
+  <input type=date value="<?= $today->format('Y-m-d') ?>">
+</label>
+<label>
+  <div>Due Date:</div>
+  <input type=date>
+</label>
 
 <button>Generate</button>
 </form>
