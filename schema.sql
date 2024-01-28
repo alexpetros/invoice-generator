@@ -1,7 +1,6 @@
 CREATE TABLE profiles (
   profile_id INTEGER PRIMARY KEY,
-  profile_name TEXT NOT NULL,
-  business_name TEXT,
+  name TEXT NOT NULL,
   email TEXT,
   phone TEXT,
   address_1 TEXT,
@@ -11,7 +10,7 @@ CREATE TABLE profiles (
 
 CREATE TABLE clients (
   client_id INTEGER PRIMARY KEY,
-  business_name TEXT NOT NULL,
+  name TEXT NOT NULL,
   email TEXT,
   phone TEXT,
   address_1 TEXT,
