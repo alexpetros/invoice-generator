@@ -33,8 +33,6 @@ $today = (new DateTime())
 
 <section>
 <h2>Profiles</h2>
-<a href=/profiles>Add New</a>
-
 <?php
 if (count($profiles) > 0):
 $profile = $profiles[0];
@@ -46,6 +44,8 @@ $profile = $profiles[0];
   }, $profiles);
 ?>
 </select>
+<p><a href=/profiles.php>Add New</a></p>
+
 <dl class=profile-details>
   <dt>Name</dt><dd><?= $profile["business_name"]?></dd>
   <dt>Email</dt><dd><?= $profile["email"]?></dd>
