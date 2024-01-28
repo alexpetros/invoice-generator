@@ -23,7 +23,11 @@ form {
     width: fit-content;
   }
 
-  input[type=text] {
+  input[type=text], select {
     width: 300px;
   }
+}
+
+.muted {
+  color: gray;
 }

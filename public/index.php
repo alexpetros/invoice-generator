@@ -14,7 +14,11 @@ $today = (new DateTime())
 ?>
 
 <section>
-<h2>Profiles</h2>
+<form action=/invoice method=POST>
+<h2>Billing Details</h2>
+
+<label>
+<div>Profile</div>
 <select name=profiles>
   <option value="" required disabled>--select profile--</option>
 <?php
@@ -22,12 +26,10 @@ $today = (new DateTime())
     echo '<option>'.$profile['name'].'</option>';
   }, $profiles);
 ?>
-</select>
-<p><a href=/profiles.php>Edit Profiles</a></p>
-</section>
+</select></label>
 
-<section>
-<h2>Clients</h2>
+<label>
+<div>Client</div>
 <select name=clients>
   <option value="" required disabled>--select client--</option>
 <?php
@@ -36,13 +38,16 @@ $today = (new DateTime())
   }, $clients);
 ?>
 </select>
-<p><a href=/clients.php>Edit Clients</a></p>
-</section>
+</label>
 
+<p>
+<a href=/profiles.php>Add Profiles</a> --
+<a href=/clients.php>Add Clients</a>
+</p>
 
-<section>
-<h2>Generate Invoice</h2>
-<form action=/invoice method=POST>
+<h2>Invoice Details</h2>
+<span class=muted>If no due date is provided, it will be automatically set to 2 weeks from the issue date.</span>
+</p>
 <label>
   <div>Invoice #:</div>
   <input type=text placeholder="Leave blank to auto-generate">
@@ -55,7 +60,14 @@ $today = (new DateTime())
   <div>Due Date:</div>
   <input type=date>
 </label>
+<p>
+
+<h2>Work Items</h2>
 
 <button>Generate</button>
 </form>
 </section>
+
+<script>
+
+</script>
