@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php require_once '../lib/start.php' ?>
 
 <?php
@@ -23,6 +22,7 @@ die();
 endif;
 ?>
 
+<!DOCTYPE html>
 <title>Profiles</title>
 <script src="/static/vendor/htmx-1.9.10.js"></script>
 <style><?php include('../templates/app-stylesheet.css')?></style>

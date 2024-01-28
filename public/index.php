@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <?php require_once '../lib/start.php' ?>
 
+<!DOCTYPE html>
 <title>Invoice Generator</title>
 <script src="/static/vendor/htmx-1.9.10.js"></script>
 <style><?php include('../templates/app-stylesheet.css')?></style>
@@ -14,27 +14,30 @@ $today = (new DateTime())
 ?>
 
 <section>
-<form action=/invoice method=POST>
+<form action=/invoices.php method=POST>
 <h2>Billing Details</h2>
 
 <label>
 <div>Profile</div>
-<select name=profiles>
+<select name=profile_id>
   <option value="" required disabled>--select profile--</option>
-<?php
-  array_map(function ($profile) {
-    echo '<option>'.$profile['name'].'</option>';
-  }, $profiles);
-?>
-</select></label>
+  <?php
+    array_map(function ($profile) {
+      ['name' => $name, 'profile_id' => $profile_id] = $profile;
+      echo "<option value=\"$profile_id\">$name</option>";
+    }, $profiles);
+  ?>
+</select>
+</label>
 
 <label>
 <div>Client</div>
-<select name=clients>
+<select name=client_id>
   <option value="" required disabled>--select client--</option>
 <?php
   array_map(function ($client) {
-    echo '<option>'.$client['name'].'</option>';
+    ['name' => $name, 'client_id' => $client_id] = $client;
+    echo "<option value=\"$client_id\">$name</option>";
   }, $clients);
 ?>
 </select>
@@ -50,15 +53,15 @@ $today = (new DateTime())
 </p>
 <label>
   <div>Invoice #:</div>
-  <input type=text placeholder="Leave blank to auto-generate">
+  <input type=text name=number placeholder="Leave blank to auto-generate">
 </label>
 <label>
   <div>Issue Date:</div>
-  <input type=date value="<?= $today->format('Y-m-d') ?>">
+  <input type=date name=issue_date value="<?= $today->format('Y-m-d') ?>">
 </label>
 <label>
   <div>Due Date:</div>
-  <input type=date>
+  <input type=date name=due_date>
 </label>
 <p>
 
