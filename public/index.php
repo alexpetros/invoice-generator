@@ -33,40 +33,28 @@ $today = (new DateTime())
 
 <section>
 <h2>Profiles</h2>
-<?php
-if (count($profiles) > 0):
-$profile = $profiles[0];
-?>
 <select name=profiles>
+  <option value="" required disabled>--select profile--</option>
 <?php
   array_map(function ($profile) {
     echo '<option>'.$profile['business_name'].'</option>';
   }, $profiles);
 ?>
 </select>
-<p><a href=/profiles.php>Add New</a></p>
-
-<dl class=profile-details>
-  <dt>Name</dt><dd><?= $profile["business_name"]?></dd>
-  <dt>Email</dt><dd><?= $profile["email"]?></dd>
-  <dt>Phone</dt><dd><?= $profile["phone"]?></dd>
-  <dt>Address</dt>
-  <dd><?= $profile["address_1"]?><br> <?= $profile["address_2"]?>
-  </dd>
-</dl>
-<?php endif ?>
+<p><a href=/profiles.php>Edit Profiles</a></p>
 </section>
 
 <section>
 <h2>Clients</h2>
 <select name=clients>
+  <option value="" required disabled>--select client--</option>
 <?php
   array_map(function ($client) {
     echo '<option>'.$client['business_name'].'</option>';
   }, $clients);
 ?>
 </select>
-<button>Add New</button>
+<p><a href=/clients.php>Edit Clients</a></p>
 </section>
 
 

@@ -30,14 +30,13 @@ if ($id) {
 <div><a href="/profiles.php?id=<?= $profile["profile_id"] ?>"><?= $profile["business_name"] ?></a></div>
 <?php endforeach; ?>
 
-<?php if ($main_profile): ?>
+<?php if (isset($main_profile)): ?>
 <dl class=profile-details>
   <dt>Name</dt><dd><?= $main_profile["business_name"]?></dd>
   <dt>Email</dt><dd><?= $main_profile["email"]?></dd>
   <dt>Phone</dt><dd><?= $main_profile["phone"]?></dd>
   <dt>Address</dt>
-  <dd><?= $main_profile["address_1"]?><br> <?= $main_profile["address_2"]?>
-  </dd>
+  <dd><?= $main_profile["address_1"]?><br> <?= $main_profile["address_2"]?></dd>
 </dl>
 <?php endif ?>
 
@@ -50,4 +49,5 @@ if ($id) {
 <label>Address 1: <input type=text> </label>
 <label>Address 2: <input type=text> </label>
 <label>Address 3: <input type=text> </label>
+<button>Submit</button>
 </form>
