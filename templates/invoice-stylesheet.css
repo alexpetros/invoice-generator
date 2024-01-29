@@ -41,12 +41,15 @@ table {
     border-bottom: 2px solid gray;
   }
 
+  tr.emphasis { background-color: lightgray; }
+
   tr.divider {
     border-top: 3px solid gray;
   }
 
   td.hidden {
     border: none;
+    background-color: white;
   }
 
   .description {

@@ -49,18 +49,19 @@
   <tr>
     <td class=description>
       <div class=item-title><?= $item['title'] ?></div>
+      <div class=item-description><?= $item['description'] ?></div>
     </td>
     <td><?= $item['hours'] ?>
     <td><?= $hourly_rate ?>
     <td><?= $item['hours'] * $hourly_rate ?>
   </tr>
   <?php endforeach; ?>
-  <tr class=divider>
+  <tr class="divider emphasis">
     <td class=hidden></td>
     <td class=hidden></td>
     <td>Subtotal</td>
     <td><?= $total_cost ?></td>
-  <tr>
+  <tr class="emphasis">
     <td class=hidden></td>
     <td class=hidden></td>
     <td>Total</td>

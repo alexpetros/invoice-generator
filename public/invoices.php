@@ -35,7 +35,7 @@ $due_date = $due_date_str === ''
   : new DateTime($due_date_str);
 
 $profile = db_query($db, 'SELECT * FROM profiles WHERE profile_id = ?', [$profile_id])[0];
-$client = db_query($db, 'SELECT * FROM clients WHERE client_id = ?', [$profile_id])[0];
+$client = db_query($db, 'SELECT * FROM clients WHERE client_id = ?', [$client_id])[0];
 
 /* $query = ' */
 /* INSERT INTO profiles (name, email, phone, address_1, address_2, address_3) */
