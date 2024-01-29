@@ -1,6 +1,6 @@
 # Invoice Generator
 ## Description
-A little PHP project to generate invoices using HTML. New invoices can be generated from a browser-based invoice.
+A little PHP project to generate invoices using HTML. Using a browser-based interface, you can specify configs for particular clients and businesses, and then generate new invoices using those configs.
 
 ## Instructions
 * `make` - Start the local server
