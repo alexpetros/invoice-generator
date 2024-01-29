@@ -105,6 +105,7 @@ function addWorkItem() {
   const newField = template.content.cloneNode(true)
   button.before(newField)
   renumberWorkItems()
+  button.scrollIntoView()
 }
 
 function deleteWorkItem(fieldset) {
