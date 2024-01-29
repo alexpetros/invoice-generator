@@ -8,10 +8,24 @@ if ($req['method'] == 'POST'):
   'invoice_number' => $invoice_number,
   'issue_date' => $issue_date_str,
   'due_date' => $due_date_str,
+  'rate' => $rate_str,
 ] = $_POST;
 
 $issue_date = new DateTime($issue_date_str);
 $default_interval = new DateInterval('P2W');
+$hourly_rate = intval($rate_str);
+
+$i = 1;
+$work_items = [];
+while (@$_POST["title-$i"]) {
+  $work_item = [
+    'title' => $_POST["title-$i"],
+    'hours' => $_POST["hours-$i"],
+    'description' => $_POST["description-$i"],
+  ];
+  array_push($work_items, $work_item);
+  $i++;
+}
 
 if ($invoice_number === '') $invoice_number = 1000;
 $due_date = $due_date_str === ''

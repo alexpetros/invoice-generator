@@ -58,6 +58,10 @@ $today = (new DateTime())
     <input type=text name=invoice_number placeholder="Leave blank to auto-generate">
   </label>
   <label>
+    <div>Hourly Rate</div>
+    <input type=number name=rate required step=1>
+  </label>
+  <label>
     <div>Issue Date:</div>
     <input type=date name=issue_date value="<?= $today->format('Y-m-d') ?>">
   </label>
@@ -82,7 +86,8 @@ $today = (new DateTime())
 <template id=work-item-template>
   <fieldset>
     <h3>1.</h3>
-    <label> <div>Title</div> <input class=title type=text> </label>
+    <label> <div>Title</div> <input class=title type=text required> </label>
+    <label> <div>Hours</div> <input class=hours type=number required> </label>
     <label> <div>Description</div> <textarea class=description></textarea> </label>
     <button type=button onclick="deleteWorkItem(this.parentElement)">Delete</button>
   </fieldset>
@@ -95,6 +100,7 @@ function renumberWorkItems() {
     const num = i + 1
     fieldset.querySelector('h3').innerText = `${num}.`
     fieldset.querySelector('.title').setAttribute('name', `title-${num}`)
+    fieldset.querySelector('.hours').setAttribute('name', `hours-${num}`)
     fieldset.querySelector('.description').setAttribute('name', `description-${num}`)
   })
 }

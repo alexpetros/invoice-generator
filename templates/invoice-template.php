@@ -45,14 +45,17 @@
     <th>Cost/hr
     <th>Total
   </tr>
+  <?php foreach($work_items as $item): ?>
   <tr>
     <td class=description>
-      <div class=item-title>Customer Support</div>
+    <div class=item-title><?= $item['title'] ?></div>
     </td>
-    <td>10
-    <td>70
-    <td>700
+    <td><?= $item['hours'] ?>
+    <td><?= $hourly_rate ?>
+    <td><?= $item['hours'] * $hourly_rate ?>
   </tr>
+  <?php endforeach; ?>
+
 </table>
 </section>
 
