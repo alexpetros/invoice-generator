@@ -50,10 +50,9 @@ $today = (new DateTime())
 
 <h2>Invoice Details</h2>
 <span class=muted>If no due date is provided, it will be automatically set to 2 weeks from the issue date.</span>
-</p>
 <label>
   <div>Invoice #:</div>
-  <input type=text name=number placeholder="Leave blank to auto-generate">
+  <input type=text name=invoice_number placeholder="Leave blank to auto-generate">
 </label>
 <label>
   <div>Issue Date:</div>
@@ -67,6 +66,22 @@ $today = (new DateTime())
 
 <h2>Work Items</h2>
 
+<fieldset>
+<h3>1.</h3>
+<label>
+  <div>Description</div>
+  <input type=text>
+</label>
+<label>
+  <div>Additional Details</div>
+  <textarea></textarea>
+</label>
+<button type=button>Delete</button>
+</fieldset>
+
+<button type=button>Add Item</button>
+
+<h2>Finish</h2>
 <button>Generate</button>
 </form>
 </section>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <title>Invoice</title>
+<style><?php require __DIR__.'/invoice-stylesheet.css'; ?></style>
 
 <div class=profile-info>
   <h1>Invoice</h1>
@@ -28,9 +29,9 @@
   <section class=invoice>
   <h3>Invoice Details</h3>
   <dl>
-  <dt>Invoice No.</dt><dd><?= $details['number'] ?></dd>
-  <dt>Issued Date:</dt><dd><?= $details['issued_date'] ?></dd>
-  <dt>Due Date:</dt><dd><?= $details['due_date'] ?></dd>
+  <dt>Invoice No.</dt><dd><?= $invoice_number ?></dd>
+  <dt>Issued Date:</dt><dd><?= $issue_date -> format('Y-m-d')?></dd>
+  <dt>Due Date:</dt><dd><?= $due_date -> format('Y-m-d')?></dd>
   </dl>
   </section>
 </div>
