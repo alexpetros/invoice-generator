@@ -17,6 +17,7 @@ $hourly_rate = intval($rate_str);
 
 $i = 1;
 $work_items = [];
+$total_cost = 0;
 while (@$_POST["title-$i"]) {
   $work_item = [
     'title' => $_POST["title-$i"],
@@ -24,6 +25,7 @@ while (@$_POST["title-$i"]) {
     'description' => $_POST["description-$i"],
   ];
   array_push($work_items, $work_item);
+  $total_cost += $work_item['hours'] * $hourly_rate;
   $i++;
 }
 

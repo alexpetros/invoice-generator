@@ -41,6 +41,14 @@ table {
     border-bottom: 2px solid gray;
   }
 
+  tr.divider {
+    border-top: 3px solid gray;
+  }
+
+  td.hidden {
+    border: none;
+  }
+
   .description {
     min-width: 500px;
   }

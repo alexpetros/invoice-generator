@@ -48,14 +48,24 @@
   <?php foreach($work_items as $item): ?>
   <tr>
     <td class=description>
-    <div class=item-title><?= $item['title'] ?></div>
+      <div class=item-title><?= $item['title'] ?></div>
     </td>
     <td><?= $item['hours'] ?>
     <td><?= $hourly_rate ?>
     <td><?= $item['hours'] * $hourly_rate ?>
   </tr>
   <?php endforeach; ?>
-
+  <tr class=divider>
+    <td class=hidden></td>
+    <td class=hidden></td>
+    <td>Subtotal</td>
+    <td><?= $total_cost ?></td>
+  <tr>
+    <td class=hidden></td>
+    <td class=hidden></td>
+    <td>Total</td>
+    <td><?= $total_cost ?></td>
+  </tr>
 </table>
 </section>
 
