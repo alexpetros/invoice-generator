@@ -6,13 +6,14 @@ body {
   print-color-adjust: exact;
 }
 
-.owner-info {
-  display: grid;
+h1 {
+  float: right;
+  margin: 0;
+  font-size: 60px;
+}
+
+section.profile {
   margin: 40px 0;
-  grid-template-columns: 1fr 1fr;
-  h1 { margin: 0; font-size: 70px; }
-  h2 { margin: 0; }
-  section { text-align: right };
 }
 
 .main-info {
@@ -40,6 +41,8 @@ table {
     background-color: lightgray;
     border-bottom: 2px solid gray;
   }
+
+  .total { font-weight: bold; }
 
   tr.emphasis { background-color: lightgray; }
 

@@ -2,18 +2,17 @@
 <title>Invoice</title>
 <style><?php require __DIR__.'/invoice-stylesheet.css'; ?></style>
 
-<div class=profile-info>
-  <h1>Invoice</h1>
-  <section class=profile>
-    <h2><?= $profile['name'] ?></h2>
-    <address>
-    <div class=addr><?= $profile['address_1'] ?></div>
-    <div class=addr><?= $profile['address_2'] ?></div>
-    <div class=email><a><?= $profile['email'] ?></a></div>
-    <div class=tel><?= $profile['phone'] ?></div>
-    </address>
-  </section>
-</div>
+<h1>Invoice</h1>
+
+<section class=profile>
+  <h2><?= $profile['name'] ?></h2>
+  <address>
+  <div class=addr><?= $profile['address_1'] ?></div>
+  <div class=addr><?= $profile['address_2'] ?></div>
+  <div class=email><a><?= $profile['email'] ?></a></div>
+  <div class=tel><?= $profile['phone'] ?></div>
+  </address>
+</section>
 
 <div class=main-info>
   <section class=client>
@@ -30,8 +29,8 @@
   <h3>Invoice Details</h3>
   <dl>
   <dt>Invoice No.</dt><dd><?= $invoice_number ?></dd>
-  <dt>Issued Date:</dt><dd><?= $issue_date -> format('Y-m-d')?></dd>
-  <dt>Due Date:</dt><dd><?= $due_date -> format('Y-m-d')?></dd>
+  <dt>Issued Date:</dt><dd><?= $issue_date -> format('M j, Y')?></dd>
+  <dt>Due Date:</dt><dd><?= $due_date -> format('M j, Y')?></dd>
   </dl>
   </section>
 </div>
@@ -59,12 +58,12 @@
   <tr class="divider emphasis">
     <td class=hidden></td>
     <td class=hidden></td>
-    <td>Subtotal</td>
+    <td class=total>Subtotal</td>
     <td><?= $total_cost ?></td>
   <tr class="emphasis">
     <td class=hidden></td>
     <td class=hidden></td>
-    <td>Total</td>
+    <td class=total>Total</td>
     <td><?= $total_cost ?></td>
   </tr>
 </table>
