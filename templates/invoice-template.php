@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>Invoice</title>
+<title><?= $invoice_title ?></title>
 <style><?php require __DIR__.'/invoice-stylesheet.css'; ?></style>
 
 <h1>Invoice</h1>

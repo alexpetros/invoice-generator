@@ -5,6 +5,7 @@ if ($req['method'] == 'POST'):
 [
   'profile_id' => $profile_id,
   'client_id' => $client_id,
+  'invoice_title' => $invoice_title,
   'invoice_number' => $invoice_number,
   'issue_date' => $issue_date_str,
   'due_date' => $due_date_str,
