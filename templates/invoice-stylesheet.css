@@ -1,8 +1,18 @@
+@page {
+  :footer { display: none; }
+  :header { display: none; }
+  margin: 0;
+  size: auto;
+}
+
+@media print {
+  height: fit-content;
+}
+
 body {
   font-family: Times;
   width: 8.5in;
-  height: 11in;
-  margin: 0 auto;
+  margin: .5in auto;
   print-color-adjust: exact;
 }
 
@@ -47,7 +57,7 @@ table {
   tr.emphasis { background-color: lightgray; }
 
   tr.divider {
-    border-top: 3px solid gray;
+    border-top: 2px solid gray;
   }
 
   td.hidden {
@@ -61,5 +71,6 @@ table {
 
   .item-title {
     font-weight: bold;
+    margin: 5px 0;
   }
 }
