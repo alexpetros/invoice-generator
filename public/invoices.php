@@ -12,6 +12,8 @@ if ($req['method'] == 'POST'):
   'rate' => $rate_str,
 ] = $_POST;
 
+$raw_form_data = file_get_contents('php://input');
+
 $issue_date = new DateTime($issue_date_str);
 $default_interval = new DateInterval('P2W');
 $hourly_rate = intval($rate_str);
@@ -38,16 +40,18 @@ $due_date = $due_date_str === ''
 $profile = db_query($db, 'SELECT * FROM profiles WHERE profile_id = ?', [$profile_id])[0];
 $client = db_query($db, 'SELECT * FROM clients WHERE client_id = ?', [$client_id])[0];
 
-/* $query = ' */
-/* INSERT INTO profiles (name, email, phone, address_1, address_2, address_3) */
-/* VALUES (:name, :email, :phone, :address_1, :address_2, :address_3); */
-/* '; */
-
-/* $result = db_query($db, $query, $_POST); */
-/* $id = $db -> lastInsertId(); */
-/* header("Location: /profiles.php?id=$id"); */
-
+// Save template HTML output as file
+ob_start();
 include('../templates/invoice-template.php');
+$invoice = ob_get_contents();
+ob_end_clean();
+
+// Save the HTML as a file, and then output it to the user
+$filecase_title = str_replace(" ", "-", strtolower($invoice_title));
+$filename = "$invoice_number-$filecase_title.html";
+file_put_contents("./invoices/generated/$filename", $invoice);
+echo $invoice;
+
 die();
 endif;
 ?>

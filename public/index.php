@@ -7,119 +7,26 @@
 
 <h1>Invoice Generator</h1>
 
+<a href="/invoices/new.php">New Invoice</a>
+
+<h2>Invoices</h2>
 <?php
-$profiles = db_query($db, 'SELECT * FROM profiles');
-$clients = db_query($db, 'SELECT * FROM clients');
-$today = (new DateTime())
+$gen_dir = 'invoices/generated';
+
+function isHTMLFile($fp) {
+  return str_ends_with($fp, '.html');
+}
+
+$files = array_filter(scandir("./$gen_dir"), 'isHTMLFile');
 ?>
+<table>
+  <tr><th>Invoice</th><th>Edit</th><th>Duplicate</th></tr>
+  <?php foreach($files as $file): ?>
+  <tr>
+    <td><?= "<a href=\"/$gen_dir/$file\">$file</a>" ?>
+    <td><?php $encoded = urlencode($file); echo "<a href=\"/invoices/edit.php?fp=$encoded\">Edit</a>" ?>
+    <td>Dupe
+  </tr>
+  <?php endforeach;?>
+</table>
 
-<form action=/invoices.php method=POST>
-
-<section>
-  <h2>Billing Details</h2>
-  <label>
-  <div>Profile</div>
-  <select name=profile_id>
-    <option value="" required disabled>--select profile--</option>
-    <?php
-      array_map(function ($profile) {
-        ['name' => $name, 'profile_id' => $profile_id] = $profile;
-        echo "<option value=\"$profile_id\">$name</option>";
-      }, $profiles);
-    ?>
-  </select>
-  </label>
-</section>
-
-<section>
-  <label>
-  <div>Client</div>
-  <select name=client_id>
-    <option value="" required disabled>--select client--</option>
-  <?php
-  array_map(function ($client) {
-    ['name' => $name, 'client_id' => $client_id] = $client;
-    echo "<option value=\"$client_id\">$name</option>";
-  }, $clients);
-  ?>
-  </select>
-  </label>
-  <p>
-  <a href=/profiles.php>Add Profiles</a> --
-  <a href=/clients.php>Add Clients</a>
-  </p>
-</section>
-
-<section>
-  <h2>Invoice Details</h2>
-  <span class=muted>If no due date is provided, it will be automatically set to 2 weeks from the issue date.</span>
-  <label>
-    <div>Title</div>
-    <input type=text name=invoice_title required>
-  </label>
-  <label>
-    <div>Invoice #:</div>
-    <input type=text name=invoice_number placeholder="Leave blank to auto-generate">
-  </label>
-  <label>
-    <div>Hourly Rate</div>
-    <input type=number name=rate required step=1>
-  </label>
-  <label>
-    <div>Issue Date:</div>
-    <input type=date name=issue_date value="<?= $today->format('Y-m-d') ?>">
-  </label>
-  <label>
-    <div>Due Date:</div>
-    <input type=date name=due_date>
-  </label>
-  <p>
-</section>
-
-<section id=work-items>
-  <h2>Work Items</h2>
-  <button type=button onclick="addWorkItem()" id=add-button>Add Item</button>
-</section>
-
-<section>
-  <h2>Finish</h2>
-  <button>Generate</button>
-  </form>
-</section>
-
-<template id=work-item-template>
-  <fieldset>
-    <h3>1.</h3>
-    <label> <div>Title</div> <input class=title type=text required> </label>
-    <label> <div>Hours</div> <input class=hours type=number required> </label>
-    <label> <div>Description</div> <textarea class=description></textarea> </label>
-    <button type=button onclick="deleteWorkItem(this.parentElement)">Delete</button>
-  </fieldset>
-</template>
-
-<script>
-function renumberWorkItems() {
-  const fieldsets = document.querySelectorAll('#work-items fieldset')
-  fieldsets.forEach((fieldset, i) => {
-    const num = i + 1
-    fieldset.querySelector('h3').innerText = `${num}.`
-    fieldset.querySelector('.title').setAttribute('name', `title-${num}`)
-    fieldset.querySelector('.hours').setAttribute('name', `hours-${num}`)
-    fieldset.querySelector('.description').setAttribute('name', `description-${num}`)
-  })
-}
-
-function addWorkItem() {
-  const template = document.querySelector('#work-item-template')
-  const button = document.querySelector('#add-button')
-  const newField = template.content.cloneNode(true)
-  button.before(newField)
-  renumberWorkItems()
-  button.scrollIntoView()
-}
-
-function deleteWorkItem(fieldset) {
-  fieldset.remove()
-  renumberWorkItems()
-}
-</script>
