@@ -10,6 +10,6 @@ $req = [
 
 if ($req['method'] == 'DELETE') {
   $info = parse_url($uri);
-  echo $info;
+  parse_str($info['query'], $query) ?? [];
 }
 ?>

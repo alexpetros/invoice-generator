@@ -40,3 +40,18 @@ form {
 .muted {
   color: gray;
 }
+
+.invoice-table {
+  width: 500px;
+  th, td {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+  }
+
+}

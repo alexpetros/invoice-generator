@@ -1,6 +1,6 @@
-<?php
-require_once '../lib/start.php';
+<?php require_once '../lib/start.php'; ?>
 
+<?php
 if ($req['method'] == 'POST'):
 [
   'profile_id' => $profile_id,
@@ -63,3 +63,12 @@ die();
 endif;
 ?>
 
+<?php
+if ($req['method'] == 'DELETE'):
+$fp = $query['fp'];
+unlink("./invoices/generated/$fp");
+header("HX-Redirect: /");
+http_response_code(303);
+die();
+endif;
+?>
