@@ -50,8 +50,8 @@ ob_end_clean();
 $filecase_title = str_replace(" ", "-", strtolower($invoice_title));
 $filename = "$invoice_number-$filecase_title.html";
 file_put_contents("./invoices/generated/$filename", $invoice);
-echo $invoice;
 
+header("Location: /");
 die();
 endif;
 ?>

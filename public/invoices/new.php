@@ -3,18 +3,19 @@
 <?php
 $profiles = db_query($db, 'SELECT * FROM profiles');
 $clients = db_query($db, 'SELECT * FROM clients');
-$today = (new DateTime())
+$today = (new DateTime());
+$is_edit = defined('existing_data');
 ?>
 
 <!DOCTYPE html>
-<title><?= $existing_data ? 'Edit Invoice' : 'New Invoice' ?></title>
+<title><?= $is_edit ? 'Edit Invoice' : 'New Invoice' ?></title>
 <style><?php include('../../templates/app-stylesheet.css')?></style>
 
-<?php if ($existing_data) echo "<script type=text/form_data id=existing_data>$existing_data</script>"; ?>
+<?php if ($is_edit) echo "<script type=text/form_data id=existing_data>$existing_data</script>"; ?>
 
 <form action=/invoices.php method=POST>
 
-<h1><?= $existing_data ? 'Edit Invoice' : 'New Invoice' ?></h1>
+<h1><?= $is_edit ? 'Edit Invoice' : 'New Invoice' ?></h1>
 <a href="/">Return Home</a>
 <section>
   <h2>Billing Details</h2>
