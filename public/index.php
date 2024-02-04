@@ -13,11 +13,8 @@
 <?php
 $gen_dir = 'invoices/generated';
 
-function isHTMLFile($fp) {
-  return str_ends_with($fp, '.html');
-}
+$files = array_filter(scandir("./$gen_dir"), fn($x) => str_ends_with($x, '.html'));
 
-$files = array_filter(scandir("./$gen_dir"), 'isHTMLFile');
 ?>
 <table>
   <tr><th>Invoice</th><th>Edit</th><th>Duplicate</th></tr>

@@ -4,7 +4,7 @@
 $profiles = db_query($db, 'SELECT * FROM profiles');
 $clients = db_query($db, 'SELECT * FROM clients');
 $today = (new DateTime());
-$is_edit = defined('existing_data');
+$is_edit = isset($existing_data);
 ?>
 
 <!DOCTYPE html>
