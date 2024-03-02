@@ -117,8 +117,15 @@ if (existing_data) {
 
   for (const [key, value] of params) {
     const e = document.querySelector(`[name=${key}]`)
-    e.value = value
+    if (e) e.value = value
   }
+
+  const fpInput = document.createElement('input')
+  const url = new URLSearchParams(window.location.search)
+  fpInput.value = url.get('fp')
+  fpInput.type = 'hidden'
+  fpInput.name = 'filename'
+  document.querySelector('form').append(fpInput)
 }
 
 function renumberWorkItems() {

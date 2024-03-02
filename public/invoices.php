@@ -9,7 +9,7 @@ if ($req['method'] == 'POST'):
   'invoice_number' => $invoice_number,
   'issue_date' => $issue_date_str,
   'due_date' => $due_date_str,
-  'rate' => $rate_str,
+  'rate' => $rate_str
 ] = $_POST;
 
 $files = array_filter(scandir("./invoices/generated"));
@@ -38,7 +38,6 @@ while (@$_POST["title-$i"]) {
   $i++;
 }
 
-if ($invoice_number === '') $invoice_number = $next_invoice_num;
 $due_date = $due_date_str === ''
   ? (clone $issue_date) -> add($default_interval)
   : new DateTime($due_date_str);
@@ -54,11 +53,18 @@ $invoice = ob_get_contents();
 ob_end_clean();
 
 // Save the HTML as a file, and then output it to the user
-$filecase_title = str_replace(" ", "-", strtolower($invoice_title));
-$filename = "$invoice_number-$filecase_title.html";
+$filename = $_POST['filename'] ?? '';
+if (empty($filename)) {
+  $filecase_title = str_replace(" ", "-", strtolower($invoice_title));
+  if ($invoice_number === '') $invoice_number = $next_invoice_num;
+  $filename = "$invoice_number-$filecase_title.html";
+}
+
+echo $filename;
 file_put_contents("./invoices/generated/$filename", $invoice);
 
 header("Location: /");
+http_response_code(303);
 die();
 endif;
 ?>
