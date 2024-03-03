@@ -20,6 +20,16 @@ $numbered_files = array_filter($files, fn($x) => preg_match("/[0-9]*-.*\.html/",
 $nums = array_map(fn($x) => explode('-', $x)[0], $numbered_files);
 $next_invoice_num =  max($nums) + 1;
 
+// Save the HTML as a file, and then output it to the user
+$filename = $_POST['filename'] ?? '';
+if (empty($filename)) {
+  $filecase_title = str_replace(" ", "-", strtolower($invoice_title));
+  if ($invoice_number === '') $invoice_number = $next_invoice_num;
+  $filename = "$invoice_number-$filecase_title.html";
+} else {
+  $invoice_number = explode('-', $filename)[0];
+}
+
 $issue_date = new DateTime($issue_date_str);
 $default_interval = new DateInterval('P2W');
 $hourly_rate = intval($rate_str);
@@ -51,14 +61,6 @@ ob_start();
 include('../templates/invoice-template.php');
 $invoice = ob_get_contents();
 ob_end_clean();
-
-// Save the HTML as a file, and then output it to the user
-$filename = $_POST['filename'] ?? '';
-if (empty($filename)) {
-  $filecase_title = str_replace(" ", "-", strtolower($invoice_title));
-  if ($invoice_number === '') $invoice_number = $next_invoice_num;
-  $filename = "$invoice_number-$filecase_title.html";
-}
 
 echo $filename;
 file_put_contents("./invoices/generated/$filename", $invoice);
