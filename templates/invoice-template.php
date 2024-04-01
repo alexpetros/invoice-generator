@@ -72,3 +72,7 @@
 </table>
 </section>
 
+<section class=late-fee-notice>
+<h3>Late Fee Notice</h3>
+Please note that invoices past due incur a late fee of 2%, charged daily.
+</section>

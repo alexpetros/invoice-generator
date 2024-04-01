@@ -22,8 +22,19 @@ h1 {
   font-size: 60px;
 }
 
-section.profile {
-  margin: 40px 0;
+section.profile, section.late-fee-notice{
+  margin: 20px 0;
+}
+
+section.late-fee-notice {
+  border: 2px solid black;
+  border-style: solid none;
+  padding: .5rem 0;
+  width: fit-content;
+}
+
+section.late-fee-notice h3 {
+  margin: 0 0 .5rem 0;
 }
 
 .main-info {
