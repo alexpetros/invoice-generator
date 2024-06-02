@@ -78,9 +78,11 @@ $is_edit = isset($existing_data);
   <p>
 </section>
 
-<section id=work-items>
+<section>
   <h2>Work Items</h2>
-  <button type=button onclick="addWorkItem()" id=add-button>Add Item</button>
+  <div id=work-items>
+  </div>
+  <button type=button onclick="clickNewItem()" id=add-button>Add Item</button>
 </section>
 
 <section>
@@ -91,8 +93,14 @@ $is_edit = isset($existing_data);
 </form>
 
 <template id=work-item-template>
-  <fieldset>
-    <h3>1.</h3>
+  <fieldset class=work-item>
+    <div class=work-item-header>
+      <h3>1.</h3>
+      <div>
+        <button class=down-button onclick="moveDown(this)" type=button>Down</button>
+        <button class=up-button onclick="moveUp(this)" type=button>Up</button>
+      </div>
+    </div>
     <label> <div>Title</div> <input class=title type=text required> </label>
     <label> <div>Hours</div> <input class=hours type=number required> </label>
     <label> <div>Description</div> <textarea class=description></textarea> </label>
@@ -126,6 +134,8 @@ if (existing_data) {
   fpInput.type = 'hidden'
   fpInput.name = 'filename'
   document.querySelector('form').append(fpInput)
+} else {
+  addWorkItem()
 }
 
 function renumberWorkItems() {
@@ -141,11 +151,36 @@ function renumberWorkItems() {
 
 function addWorkItem() {
   const template = document.querySelector('#work-item-template')
-  const button = document.querySelector('#add-button')
-  const newField = template.content.cloneNode(true)
-  button.before(newField)
+  const workItems = document.querySelector('#work-items')
+  const newFieldset = template.content.cloneNode(true)
+  workItems.appendChild(newFieldset)
   renumberWorkItems()
-  button.scrollIntoView()
+}
+
+function clickNewItem() {
+  addWorkItem()
+  const workItems = document.querySelector('#work-items')
+  workItems.lastElementChild.scrollIntoView()
+}
+
+function moveDown(button) {
+  // Not sure if this is the recommended way to do this
+  const thisFieldset = button.closest('fieldset')
+  const nextFieldset = thisFieldset.nextElementSibling
+  const parent = thisFieldset.parentElement
+  if (nextFieldset) parent.insertBefore(thisFieldset, nextFieldset.nextElementSibling)
+  renumberWorkItems()
+  thisFieldset.scrollIntoView()
+}
+
+function moveUp(button) {
+  // Not sure if this is the recommended way to do this
+  const thisFieldset = button.closest('fieldset')
+  const prevFieldset = thisFieldset.previousElementSibling
+  const parent = thisFieldset.parentElement
+  if (prevFieldset) parent.insertBefore(thisFieldset, prevFieldset)
+  renumberWorkItems()
+  thisFieldset.scrollIntoView()
 }
 
 function deleteWorkItem(fieldset) {
