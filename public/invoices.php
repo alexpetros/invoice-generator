@@ -41,11 +41,11 @@ while (@$_POST["title-$i"]) {
   $work_item = [
     'title' => $_POST["title-$i"],
     'hours' => $_POST["hours-$i"],
-    'price' => $_POST["price-$i"],
+    'price' => empty($_POST["price-$i"]) ? null : $_POST["price-$i"],
     'description' => $_POST["description-$i"],
   ];
   array_push($work_items, $work_item);
-  $total_cost +=  empty($work_item['price']) ?? ($work_item['hours'] * $hourly_rate);
+  $total_cost +=  $work_item['price'] ?? ($work_item['hours'] * $hourly_rate);
 
   $i++;
 }

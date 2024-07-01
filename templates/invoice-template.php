@@ -53,7 +53,7 @@
       <div class=item-title><?= $item['title'] ?></div>
       <div class=item-description><?= $item['description'] ?></div>
     </td>
-    <td><?= $item['hours'] ?>
+    <td><?= empty($item['price']) ? $item['hours'] : '-' ?>
     <td><?= empty($item['price']) ? $hourly_rate : '-' ?>
     <td><?= empty($item['price']) ? $item['hours'] * $hourly_rate : $item['price'] ?>
   </tr>
