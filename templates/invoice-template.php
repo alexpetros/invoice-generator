@@ -54,8 +54,8 @@
       <div class=item-description><?= $item['description'] ?></div>
     </td>
     <td><?= $item['hours'] ?>
-    <td><?= $hourly_rate ?>
-    <td><?= $item['hours'] * $hourly_rate ?>
+    <td><?= empty($item['price']) ? $hourly_rate : '-' ?>
+    <td><?= empty($item['price']) ? $item['hours'] * $hourly_rate : $item['price'] ?>
   </tr>
   <?php endforeach; ?>
   <tr class="divider emphasis">

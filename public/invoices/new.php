@@ -102,7 +102,8 @@ $is_edit = isset($existing_data);
       </div>
     </div>
     <label> <div>Title</div> <input class=title type=text required> </label>
-    <label> <div>Hours</div> <input class=hours type=number required> </label>
+    <label> <div>Hours</div> <input class=hours type=number> </label>
+    <label> <div>Price</div> <input class=price type=number> </label>
     <label> <div>Description</div> <textarea class=description></textarea> </label>
     <button type=button onclick="deleteWorkItem(this.parentElement)">Delete</button>
   </fieldset>
@@ -145,6 +146,7 @@ function renumberWorkItems() {
     fieldset.querySelector('h3').innerText = `${num}.`
     fieldset.querySelector('.title').setAttribute('name', `title-${num}`)
     fieldset.querySelector('.hours').setAttribute('name', `hours-${num}`)
+    fieldset.querySelector('.price').setAttribute('name', `price-${num}`)
     fieldset.querySelector('.description').setAttribute('name', `description-${num}`)
   })
 }

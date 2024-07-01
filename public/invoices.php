@@ -31,7 +31,7 @@ if (empty($filename)) {
 }
 
 $issue_date = new DateTime($issue_date_str);
-$default_interval = new DateInterval('P2W');
+$default_interval = new DateInterval('P3W');
 $hourly_rate = intval($rate_str);
 
 $i = 1;
@@ -41,10 +41,12 @@ while (@$_POST["title-$i"]) {
   $work_item = [
     'title' => $_POST["title-$i"],
     'hours' => $_POST["hours-$i"],
+    'price' => $_POST["price-$i"],
     'description' => $_POST["description-$i"],
   ];
   array_push($work_items, $work_item);
-  $total_cost += $work_item['hours'] * $hourly_rate;
+  $total_cost +=  empty($work_item['price']) ?? ($work_item['hours'] * $hourly_rate);
+
   $i++;
 }
 
