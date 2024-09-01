@@ -19,7 +19,6 @@ if ($data == NULL) {
   'title' => $invoice_title,
   'invoice_number' => $invoice_number,
   'issue_date' => $issue_date_str,
-  'due_date' => $due_date_str,
   'hourly_rate' => $hourly_rate,
   'work_items' => $work_items,
 ] = $data;
@@ -27,9 +26,9 @@ if ($data == NULL) {
 $issue_date = new DateTime($issue_date_str);
 $default_interval = new DateInterval('P3W');
 
-$due_date = $due_date_str === ''
-  ? (clone $issue_date) -> add($default_interval)
-  : new DateTime($due_date_str);
+$due_date = array_key_exists('due_date', $data)
+  ? new DateTime($due_date_str)
+  : (clone $issue_date) -> add($default_interval);
 
 $total_cost = 0;
 foreach ($work_items as $work_item) {
