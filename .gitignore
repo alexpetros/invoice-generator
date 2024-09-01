@@ -1,5 +1,6 @@
 data/
-public/invoices/generated/*.html
+test/
+generated/*.html
 
 *.db
 *.db-wal

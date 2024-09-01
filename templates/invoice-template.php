@@ -2,7 +2,7 @@
 <title><?= $invoice_title ?></title>
 <style><?php require __DIR__.'/invoice-stylesheet.css'; ?></style>
 <script type=text/form-data id=raw_data>
-<?= $raw_form_data."\n" ?>
+<?= $raw_json_data."\n" ?>
 </script>
 
 <h1>Invoice</h1>

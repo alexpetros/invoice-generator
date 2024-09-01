@@ -1,12 +1,10 @@
 # Invoice Generator
 ## Description
-A little PHP project to generate invoices using HTML. Using a browser-based interface, you can specify configs for particular clients and businesses, and then generate new invoices using those configs.
+A little PHP project to generate invoices using HTML.
+
+Originally, this was a local browser-based interface, where you'd run the server and generate the invoices using a form.
+Now it's a CLI, because it's much easier to edit invoices this way!
 
 ## Instructions
-* `make` - Start the local server
-* `make reset-db` - Delete local database and make a new one from scratch
 
-## TODO
-* Start new invoice by cloning the params of the last one
-* Stores the generated invoices in an SQLite database
-* Add a CLI interface that parses JSON invoice configs as well
+With php8, run `php generate.php INVOICE_NAME.json`
