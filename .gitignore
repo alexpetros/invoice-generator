@@ -1,8 +1,2 @@
-data/
-test/
-generated/*.html
-
-*.db
-*.db-wal
-*.db-shm
-error.txt
+data/**/*.json
+generated/**/*.html
