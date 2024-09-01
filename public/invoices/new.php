@@ -103,7 +103,7 @@ $is_edit = isset($existing_data);
     </div>
     <label> <div>Title</div> <input class=title type=text required> </label>
     <label> <div>Hours</div> <input class=hours type=number> </label>
-    <label> <div>Price</div> <input class=price type=number> </label>
+    <label> <div>Price</div> <input class=price type=number step=any> </label>
     <label> <div>Description</div> <textarea class=description></textarea> </label>
     <button type=button onclick="deleteWorkItem(this.parentElement)">Delete</button>
   </fieldset>
