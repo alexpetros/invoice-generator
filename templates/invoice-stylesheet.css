@@ -1,3 +1,9 @@
+:root {
+  --background-primary: white;
+  --accent-primary: lightgray;
+  --stroke-primary: gray;
+}
+
 @page {
   :footer { display: none; }
   :header { display: none; }
@@ -14,6 +20,7 @@ body {
   width: 8.5in;
   margin: .5in auto;
   print-color-adjust: exact;
+  background-color: var(--background-primary);
 }
 
 h1 {
@@ -59,13 +66,17 @@ table {
   }
 
   th {
-    background-color: lightgray;
-    border-bottom: 2px solid gray;
+    background-color: var(--accent-primary);
+    border-bottom: 2px solid var(--stroke-primary);
   }
 
-  .total { font-weight: bold; }
+  .total {
+    font-weight: bold;
+  }
 
-  tr.emphasis { background-color: lightgray; }
+  tr.emphasis {
+    background-color: var(--accent-primary);
+  }
 
   tr.divider {
     border-top: 2px solid gray;
@@ -73,7 +84,7 @@ table {
 
   td.hidden {
     border: none;
-    background-color: white;
+    background-color: var(--background-primary);
   }
 
   .description {
